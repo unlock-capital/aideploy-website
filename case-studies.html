@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — AI Deploy</title>
+<meta name="description" content="Real results from real engagements. See how AI Deploy has transformed operations for businesses across venture capital, professional services, and faith-based organisations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--indigo:#120B34;--teal:#49CEB5;--charcoal:#2C3E50;--teal-alt:#00B4A6;--sky:#4A90D9;--platinum:#F5F7FA;--steel:#8A9BB0;--cream:#FAF8F5;--warm-white:#FFFDF9;--gray-700:#4a5568;--gray-400:#9ca3af;--border:#e2e8f0;--font-serif:'Fraunces',Georgia,serif;--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--section-pad:120px;--section-pad-mobile:64px;--content-max:1200px;--side-pad:80px;--side-pad-mobile:24px;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--duration:600ms;--nav-height:72px;--nav-height-mobile:64px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--charcoal);line-height:1.7;background:var(--cream);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3{font-family:var(--font-serif);color:var(--indigo);line-height:1.15}
+h1{font-size:clamp(40px,5vw,64px);font-weight:700}
+h2{font-size:clamp(28px,3.5vw,42px);font-weight:600}
+h3{font-size:clamp(20px,2.5vw,28px);font-weight:600}
+p{font-size:16px;color:var(--gray-700)}
+.label-overline{font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--steel)}
+a{color:var(--teal-alt);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--teal)}
+.container{max-width:var(--content-max);margin:0 auto;padding-left:var(--side-pad);padding-right:var(--side-pad)}
+.section{padding:var(--section-pad) 0}
+.section--cream{background:var(--cream)}
+.section--platinum{background:var(--platinum)}
+.section--indigo{background:var(--indigo)}
+.text-center{text-align:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:600;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s ease;text-decoration:none}
+.btn--primary{background:var(--teal);color:var(--indigo)}
+.btn--primary:hover{background:#3dbfa8;color:var(--indigo);transform:translateY(-2px);box-shadow:0 8px 24px rgba(73,206,181,0.3)}
+.btn--ghost{background:transparent;border:2px solid var(--teal);color:var(--indigo)}
+.btn--ghost:hover{background:rgba(73,206,181,0.1);color:var(--indigo);transform:translateY(-2px)}
+.btn--ghost.btn--on-dark{color:white}
+.badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:6px;margin-bottom:12px}
+.badge--teal{background:var(--teal);color:var(--indigo)}
+.badge--steel{background:var(--platinum);color:var(--steel);border:1px solid var(--border)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--duration) var(--ease-out-expo),transform var(--duration) var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ---- NAV ---- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all 0.3s ease}
+.nav--solid{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav__inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--side-pad);height:var(--nav-height);display:flex;align-items:center;justify-content:space-between}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--indigo);font-family:var(--font-sans);font-size:18px;font-weight:700;letter-spacing:-0.01em}
+.nav__logo svg{height:36px;width:auto}
+.nav__links{display:flex;gap:32px;list-style:none}
+.nav__links a{font-size:14px;font-weight:500;color:var(--charcoal);text-decoration:none;transition:color 0.2s}
+.nav__links a:hover,.nav__links a.active{color:var(--teal-alt)}
+.nav__cta{font-size:13px;padding:10px 24px}
+.nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav__hamburger span{width:22px;height:2px;background:var(--indigo);border-radius:2px;transition:all 0.2s}
+.nav__mobile{position:fixed;inset:0;background:var(--indigo);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.nav__mobile.open{opacity:1;pointer-events:auto}
+.nav__mobile a{font-size:20px;color:white;text-decoration:none;font-weight:500}
+
+/* ---- PAGE HERO ---- */
+.page-hero{padding-top:160px;padding-bottom:60px;text-align:center;background:var(--cream)}
+.page-hero h1{margin-bottom:16px}
+.page-hero p{font-size:18px;color:var(--gray-700);max-width:600px;margin:0 auto;line-height:1.6}
+
+/* ---- CASE STUDY CARDS ---- */
+.cs-primary{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.cs-primary__top{display:grid;grid-template-columns:1fr 0.5fr;gap:0}
+.cs-primary__content{padding:40px}
+.cs-primary__sidebar{background:var(--platinum);padding:40px;display:flex;flex-direction:column;justify-content:center;gap:24px;border-left:1px solid var(--border)}
+.cs-primary__meta{font-size:14px;color:var(--steel);margin-top:8px;line-height:1.6}
+.cs-primary h3.cs-section-heading{font-family:var(--font-sans);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal-alt);margin-top:32px;margin-bottom:12px}
+.cs-primary h3.cs-section-heading:first-of-type{margin-top:24px}
+.cs-primary__body{font-size:15px;color:var(--gray-700);line-height:1.7}
+.cs-sidebar__metric{text-align:center}
+.cs-sidebar__value{font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--teal-alt)}
+.cs-sidebar__label{font-size:12px;color:var(--steel);margin-top:2px}
+
+/* Results table */
+.results-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px;font-size:14px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.results-table thead{background:var(--indigo)}
+.results-table th{padding:12px 16px;text-align:left;font-weight:600;color:white;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
+.results-table td{padding:12px 16px;border-bottom:1px solid var(--border)}
+.results-table tr:last-child td{border-bottom:none}
+.results-table tbody tr:hover{background:rgba(73,206,181,0.04)}
+.results-table .impact-value{font-weight:700;color:var(--teal-alt)}
+
+/* Quote */
+.cs-quote{border-left:4px solid var(--teal);padding:24px 32px;background:rgba(73,206,181,0.05);border-radius:0 12px 12px 0;margin-top:32px}
+.cs-quote blockquote{font-family:var(--font-serif);font-size:17px;color:var(--charcoal);font-style:italic;line-height:1.6;margin-bottom:12px}
+.cs-quote cite{font-style:normal;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--indigo)}
+.cs-quote cite span{font-weight:400;color:var(--steel)}
+
+/* Investment summary */
+.cs-investment{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+.cs-investment__item{text-align:center;padding:16px;background:var(--platinum);border-radius:10px}
+.cs-investment__label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--steel);margin-bottom:4px}
+.cs-investment__value{font-size:16px;font-weight:700;color:var(--indigo)}
+.cs-investment__value--teal{color:var(--teal-alt)}
+
+/* Secondary case studies */
+.cs-secondary{background:white;border:1px solid var(--border);border-radius:16px;padding:40px}
+.cs-secondary__header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.cs-secondary__meta{font-size:14px;color:var(--steel);margin-bottom:24px;line-height:1.6}
+.cs-secondary h3.cs-section-heading{font-family:var(--font-sans);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--steel);margin-top:24px;margin-bottom:10px}
+.cs-secondary__body{font-size:15px;color:var(--gray-700);line-height:1.7}
+.cs-secondary .results-table thead{background:var(--charcoal)}
+.cs-secondary__note{font-size:13px;font-style:italic;color:var(--steel);margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+
+/* Solution list */
+.solution-list{list-style:none;margin:12px 0}
+.solution-list li{position:relative;padding-left:20px;margin-bottom:8px;font-size:14px;color:var(--gray-700);line-height:1.6}
+.solution-list li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.cs-secondary .solution-list li::before{background:var(--steel)}
+
+/* ---- CTA BANNER ---- */
+.cta-banner{padding:var(--section-pad) 0;text-align:center}
+.cta-banner h2{color:white;margin-bottom:16px}
+.cta-banner p{color:var(--steel);max-width:540px;margin:0 auto 32px;font-size:16px}
+.cta-banner__buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---- FOOTER ---- */
+.footer{background:var(--indigo);padding:64px 0 32px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer__logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer__logo svg{height:44px;width:auto}
+.footer__tagline{font-size:14px;color:var(--steel);line-height:1.6}
+.footer__col h4{font-family:var(--font-sans);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px}
+.footer__col ul{list-style:none}
+.footer__col li{margin-bottom:10px}
+.footer__col a{font-size:14px;color:var(--steel);text-decoration:none;transition:color 0.2s}
+.footer__col a:hover{color:white}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer__legal{font-size:13px;color:var(--steel)}
+.footer__legal a{color:var(--steel)}
+.footer__legal a:hover{color:white}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px){
+  :root{--side-pad:40px;--section-pad:80px}
+}
+@media(max-width:768px){
+  :root{--side-pad:var(--side-pad-mobile);--section-pad:var(--section-pad-mobile);--nav-height:var(--nav-height-mobile)}
+  .nav__links,.nav__cta{display:none}
+  .nav__hamburger{display:flex}
+  .cs-primary__top{grid-template-columns:1fr}
+  .cs-primary__sidebar{border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;gap:16px;justify-content:center}
+  .cs-investment{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer__bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .footer__grid{grid-template-columns:1fr}
+  .cta-banner__buttons{flex-direction:column;align-items:center}
+  .cs-primary__content{padding:24px}
+  .cs-primary__sidebar{padding:24px}
+  .cs-secondary{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav nav--solid" id="mainNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="300 295 430 230" height="36"><path fill="#120B34" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/><path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/></svg>
+      AI Deploy
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="case-studies.html" class="active">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn--primary nav__cta">Get a $999 Audit</a>
+    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="services.html" onclick="closeMobileNav()">Services</a>
+  <a href="how-it-works.html" onclick="closeMobileNav()">How It Works</a>
+  <a href="case-studies.html" onclick="closeMobileNav()">Case Studies</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  <a href="contact.html" class="btn btn--primary" onclick="closeMobileNav()">Get a $999 Audit</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="reveal">Proof, not promises</h1>
+    <p class="reveal" style="transition-delay:100ms">Real results from real engagements. Here's what AI operations looks like in practice.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASE STUDY 1: UNLOCK CAPITAL (Primary)
+     ============================================================ -->
+<section class="section section--platinum">
+  <div class="container">
+    <div class="cs-primary reveal">
+      <div class="cs-primary__top">
+        <div class="cs-primary__content">
+          <span class="badge badge--teal">Primary Case Study</span>
+          <h2 style="font-size:clamp(24px,3vw,32px);margin-bottom:4px">Unlock Capital</h2>
+          <p class="cs-primary__meta">Early-stage venture fund · 2-person investment team · VC / Financial services</p>
+
+          <h3 class="cs-section-heading">The Challenge</h3>
+          <p class="cs-primary__body">Unlock Capital screens hundreds of inbound deals per year with a two-person team. Before AI Deploy, every deal required manual triage — reading pitch decks, researching founders, assessing thesis fit, and writing screening notes. The team was spending the majority of their time on deal administration instead of the relationship-building and due diligence that actually drives returns.</p>
+          <p class="cs-primary__body" style="margin-top:12px">Email was a warzone. Founder intros, LP correspondence, legal documents, and noise all sat in the same inbox. Meeting notes were rough and action items got lost. Portfolio monitoring was equally manual — tracking milestones, preparing LP updates, and maintaining CRM records consumed hours every week.</p>
+
+          <h3 class="cs-section-heading">The Solution</h3>
+          <p class="cs-primary__body" style="margin-bottom:12px"><strong>Phase 1 — Audit + Free Starter Pack ($999 one-off)</strong></p>
+          <p class="cs-primary__body">AI Deploy audited Unlock Capital's entire investment workflow, from deal sourcing through to LP reporting. The audit scored each workflow on a friction-automation matrix and delivered a ranked roadmap.</p>
+          <p class="cs-primary__body" style="margin-top:8px">In the same week, the Free Starter Pack was deployed:</p>
+          <ul class="solution-list">
+            <li><strong>Email Triage</strong> — Gmail + Gemini configured to sort the inbox: founder intros, LP comms, legal docs, noise. Auto-draft responses for standard inbound.</li>
+            <li><strong>Meeting Notes</strong> — Zoom AI Companion configured for founder calls, LP meetings, and board meetings. Structured notes with action items appear in Notion automatically.</li>
+            <li><strong>Document Drafter</strong> — Prompt templates in Google Docs + Gemini for LP updates, follow-up emails, reference check templates.</li>
+            <li><strong>Context-Aware Assistant</strong> — Chat interface connected to Notion, Gmail, and Drive.</li>
+          </ul>
+
+          <p class="cs-primary__body" style="margin-top:20px;margin-bottom:12px"><strong>Phase 2 — Deal Flow Booster Pack ($999/month)</strong></p>
+          <ul class="solution-list">
+            <li><strong>Deal Quick Screen</strong> — 30-second triage on every inbound deal. Checks thesis fit, kill-shot gates, instant PASS/PROCEED verdict.</li>
+            <li><strong>Deal Screener</strong> — Full scoring engine: 6-dimension investment rubric, 8-dimension founder rubric, interactive HTML report with ADVANCE / MONITOR / PASS verdict.</li>
+            <li><strong>Deck Analyser</strong> — Processes pitch decks, extracts key metrics, flags inconsistencies, generates structured summaries.</li>
+            <li><strong>Inbound Sorter</strong> — Triages incoming emails and LinkedIn intros by thesis fit.</li>
+          </ul>
+
+          <h3 class="cs-section-heading">The Results</h3>
+          <table class="results-table">
+            <thead>
+              <tr><th>Metric</th><th>Before</th><th>After</th><th>Impact</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Deal screening time</td><td>45–60 min per deal</td><td>5–10 min per deal</td><td class="impact-value">85% reduction</td></tr>
+              <tr><td>Monthly admin hours</td><td>80+ hours</td><td>~15 hours</td><td class="impact-value">65+ hours reclaimed</td></tr>
+              <tr><td>Deals screened per month</td><td>15–20</td><td>40+</td><td class="impact-value">2x throughput</td></tr>
+              <tr><td>Time to IC-ready memo</td><td>2–3 days</td><td>2–3 hours</td><td class="impact-value">90% faster</td></tr>
+              <tr><td>Email triage (manual)</td><td>30+ min/day</td><td>~5 min/day</td><td class="impact-value">80% reduction</td></tr>
+            </tbody>
+          </table>
+
+          <div class="cs-investment">
+            <div class="cs-investment__item">
+              <div class="cs-investment__label">Monthly investment</div>
+              <div class="cs-investment__value">$999/mo</div>
+            </div>
+            <div class="cs-investment__item">
+              <div class="cs-investment__label">Monthly value returned</div>
+              <div class="cs-investment__value cs-investment__value--teal">$5,200+</div>
+            </div>
+            <div class="cs-investment__item">
+              <div class="cs-investment__label">ROI</div>
+              <div class="cs-investment__value cs-investment__value--teal">Over 5x</div>
+            </div>
+          </div>
+
+          <div class="cs-quote">
+            <blockquote>"AI Deploy didn't give us a chatbot. They rebuilt our entire deal workflow — from the first inbound email to the IC memo. The starter pack had my inbox sorted and my meeting notes structured in the first week, before we even started on the paid skills. The deal screening booster pack was running inside two weeks. We didn't write a single line of code."</blockquote>
+            <cite>Simon Betschel <span>· Managing Partner, Unlock Capital</span></cite>
+          </div>
+        </div>
+
+        <div class="cs-primary__sidebar">
+          <div class="cs-sidebar__metric">
+            <div class="cs-sidebar__value">85%</div>
+            <div class="cs-sidebar__label">Reduction in screening time</div>
+          </div>
+          <div class="cs-sidebar__metric">
+            <div class="cs-sidebar__value">65+</div>
+            <div class="cs-sidebar__label">Hours reclaimed per month</div>
+          </div>
+          <div class="cs-sidebar__metric">
+            <div class="cs-sidebar__value">2x</div>
+            <div class="cs-sidebar__label">Deal throughput</div>
+          </div>
+          <div class="cs-sidebar__metric">
+            <div class="cs-sidebar__value">5x+</div>
+            <div class="cs-sidebar__label">Monthly ROI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASE STUDY 2: ACCOUNTING FIRM
+     ============================================================ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="cs-secondary reveal">
+      <span class="badge badge--steel">Scenario-Based Case Study</span>
+      <div class="cs-secondary__header">
+        <h2 style="font-size:clamp(22px,3vw,28px)">Professional Services Firm</h2>
+      </div>
+      <p class="cs-secondary__meta">Mid-tier accounting and advisory firm · ~45 staff · Professional services</p>
+
+      <h3 class="cs-section-heading">The Challenge</h3>
+      <p class="cs-secondary__body">A 45-person accounting firm was drowning in client onboarding paperwork. Every new engagement required 15+ manual steps across three systems — CRM, practice management, and document management. Staff were duplicating data entry, missing compliance steps, and spending 4–6 hours per new client on administrative setup instead of billable advisory work.</p>
+
+      <h3 class="cs-section-heading">The Solution</h3>
+      <p class="cs-secondary__body">AI Deploy ran a $999 audit, scoring every workflow in the client lifecycle. The audit identified client onboarding as the highest-friction, highest-frequency process — and delivered the Free Starter Pack in the first week.</p>
+      <p class="cs-secondary__body" style="margin-top:8px">The firm then deployed the <strong>Operations Booster Pack</strong> ($999/month):</p>
+      <ul class="solution-list">
+        <li><strong>Client intake automation</strong> — extracts key details from engagement letters and pre-populates all three systems in one pass</li>
+        <li><strong>Compliance checklist generator</strong> — automatically creates required compliance documentation based on engagement type and client risk profile</li>
+        <li><strong>Welcome pack builder</strong> — generates personalised client welcome packs with fee schedules, team introductions, and key dates</li>
+      </ul>
+
+      <h3 class="cs-section-heading">The Results</h3>
+      <table class="results-table">
+        <thead>
+          <tr><th>Metric</th><th>Before</th><th>After</th><th>Impact</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>New client setup time</td><td>4–6 hours</td><td>45 minutes</td><td class="impact-value">85% reduction</td></tr>
+          <tr><td>Compliance step miss rate</td><td>~12%</td><td>&lt;1%</td><td class="impact-value">Near-zero errors</td></tr>
+          <tr><td>Staff hours on onboarding/month</td><td>~60 hours</td><td>~10 hours</td><td class="impact-value">50 hours reclaimed</td></tr>
+        </tbody>
+      </table>
+
+      <p class="cs-secondary__note">Scenario based on typical professional services engagement. Metrics reflect realistic outcomes from comparable deployments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CASE STUDY 3: CHURCH
+     ============================================================ -->
+<section class="section section--platinum">
+  <div class="container">
+    <div class="cs-secondary reveal">
+      <span class="badge badge--steel">Scenario-Based Case Study</span>
+      <div class="cs-secondary__header">
+        <h2 style="font-size:clamp(22px,3vw,28px)">Mid-Size Church</h2>
+      </div>
+      <p class="cs-secondary__meta">~20 staff, 800+ congregation · Faith-based / nonprofit</p>
+
+      <h3 class="cs-section-heading">The Challenge</h3>
+      <p class="cs-secondary__body">A mid-size church with 800+ members was buried in communications. The office manager was personally handling 200+ weekly communications — bulletins, social media posts, visitor follow-ups, event announcements, and volunteer coordination. Each communication type had its own template and its own approval workflow. The pastoral team was spending more time on admin than on pastoral care.</p>
+
+      <h3 class="cs-section-heading">The Solution</h3>
+      <p class="cs-secondary__body">The $999 audit mapped the church's entire communications and operations workflow. The Free Starter Pack deployed email triage and meeting notes on their existing Gmail and Zoom setup in the first week.</p>
+      <p class="cs-secondary__body" style="margin-top:8px">The church started with the <strong>Communications Booster Pack</strong> ($999/month):</p>
+      <ul class="solution-list">
+        <li><strong>Weekly bulletin builder</strong> — generates the weekly bulletin from sermon notes, event calendar, and prayer points</li>
+        <li><strong>Social media scheduler</strong> — creates post content from sermon clips, event photos, and announcements</li>
+        <li><strong>Visitor follow-up</strong> — processes visitor cards, generates personalised welcome emails, schedules follow-up tasks</li>
+        <li><strong>Announcement drafter</strong> — creates consistent announcements across all channels from a single input</li>
+      </ul>
+
+      <h3 class="cs-section-heading">The Results</h3>
+      <table class="results-table">
+        <thead>
+          <tr><th>Metric</th><th>Before</th><th>After</th><th>Impact</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Weekly comms handled manually</td><td>200+</td><td>~30 (exceptions only)</td><td class="impact-value">85% automated</td></tr>
+          <tr><td>Time spent on comms/week</td><td>35+ hours</td><td>~8 hours</td><td class="impact-value">27 hours reclaimed</td></tr>
+          <tr><td>Visitor follow-up response time</td><td>3–5 days</td><td>Same day</td><td class="impact-value">80% faster</td></tr>
+          <tr><td>Missed event announcements</td><td>2–3 per month</td><td>0</td><td class="impact-value">Zero misses</td></tr>
+        </tbody>
+      </table>
+
+      <p class="cs-secondary__note">Scenario based on typical faith-based / nonprofit engagement. Metrics reflect realistic outcomes from comparable deployments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+     ============================================================ -->
+<section class="section--indigo cta-banner">
+  <div class="container">
+    <h2 class="reveal">Your business could be the next case study.</h2>
+    <p class="reveal">Every engagement starts with the same question: where is your team spending time on work that AI could handle? A $999 audit answers that question — and delivers a free starter pack with three working automations in the first week.</p>
+    <div class="cta-banner__buttons reveal">
+      <a href="contact.html" class="btn btn--primary">Book a $999 Audit</a>
+      <a href="services.html" class="btn btn--ghost btn--on-dark">See services & pricing →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="225 295 575 365" height="44"><path fill="#FFFFFF" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/><path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/><path fill="#FFFFFF" d="M296.893 612.498L283.35 649.999H231.676L290.137 586.377C296.478 579.482 300.746 575.074 304.806 571.65C316.024 562.177 325.798 559.156 338.741 558.903C345.605 558.769 354.178 559.416 360.828 560.782L371.728 563.17L337.689 649.999H291.107L306.252 612.498H296.893Z"/><path fill="#FFFFFF" d="M381.474 649.999H337.689L371.728 563.17L381.474 565.298C392.107 567.784 400.074 571.689 406.414 578.29C415.083 587.32 418.543 599.282 414.687 611.32C411.447 621.437 405.244 631.101 398.557 638.955C394.842 643.32 388.467 649.175 381.474 649.999Z"/><path fill="#FFFFFF" d="M449.039 649.999H423.253L464.129 558.903H551.713L539.722 586.377H477.338L472.782 597.015H530.404L519.174 622.526H461.552L449.039 649.999Z"/><path fill="#FFFFFF" d="M537.91 649.999H512.124L553 558.903H586.073C596.777 558.903 607.024 559.558 615.66 565.575C628.533 574.539 631.613 592.78 624.44 607.277C617.405 621.492 603.399 633.871 588.83 641.07C579.476 645.688 568.855 649.033 558.268 649.636C551.575 650.005 544.605 649.999 537.91 649.999Z"/><path fill="#FFFFFF" d="M584.77 649.999L625.647 558.903H651.432L610.557 649.999H584.77Z"/><path fill="#49CEB5" d="M649.553 622.526L660.783 597.015H718.405L707.175 622.526H649.553Z"/><path fill="#FFFFFF" d="M625.647 558.903L584.77 649.999H610.557L651.432 558.903H625.647Z"/><path fill="#FFFFFF" d="M639.205 649.999L680.081 558.903H767.665L755.675 586.377H693.291L688.735 597.015H746.357L735.127 622.526H677.505L665.51 649.999H639.205Z"/><path fill="#FBFAFD" d="M672.062 649.999H639.205L665.51 649.999H672.062Z"/><path fill="#FFFFFF" d="M730.965 649.999L744.508 612.498H753.867L738.722 649.999H786.697L771.815 586.377H795.949L788.397 558.903H749.992C743.339 559.416 738.411 561.195 733.065 564.619C727.089 568.445 722.478 572.88 718.075 578.29C712.281 585.405 703.671 597.7 700.197 606.288C694.695 619.895 697.994 636.053 710.006 644.77C714.629 648.131 721.41 649.999 730.965 649.999Z"/></svg>
+        </div>
+        <p class="footer__tagline">AI that works — deployed, managed, and proven.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#audit">The Audit</a></li>
+          <li><a href="services.html#packs">Booster Packs</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@aideploy.com.au">hello@aideploy.com.au</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__legal">© 2026 AI Deploy Pty Ltd · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>

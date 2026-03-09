@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — AI Deploy</title>
+<meta name="description" content="A $999 audit to find the wins. Booster packs to capture them. AI deployed into your actual workflows, managed by us.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--indigo:#120B34;--teal:#49CEB5;--charcoal:#2C3E50;--teal-alt:#00B4A6;--sky:#4A90D9;--platinum:#F5F7FA;--steel:#8A9BB0;--cream:#FAF8F5;--warm-white:#FFFDF9;--gray-700:#4a5568;--gray-400:#9ca3af;--border:#e2e8f0;--font-serif:'Fraunces',Georgia,serif;--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--section-pad:120px;--section-pad-mobile:64px;--content-max:1200px;--side-pad:80px;--side-pad-mobile:24px;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--duration:600ms;--nav-height:72px;--nav-height-mobile:64px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--charcoal);line-height:1.7;background:var(--cream);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-serif);color:var(--indigo);line-height:1.15}
+h1{font-size:clamp(40px,5vw,64px);font-weight:700}
+h2{font-size:clamp(28px,3.5vw,42px);font-weight:600}
+h3{font-size:clamp(20px,2.5vw,28px);font-weight:600}
+p{font-size:16px;color:var(--gray-700)}
+a{color:var(--teal-alt);text-decoration:none;transition:color .2s}
+a:hover{color:var(--teal)}
+.container{max-width:var(--content-max);margin:0 auto;padding-left:var(--side-pad);padding-right:var(--side-pad)}
+.section{padding:var(--section-pad) 0}
+.section--cream{background:var(--cream)}
+.section--platinum{background:var(--platinum)}
+.section--indigo{background:var(--indigo)}
+.section--teal-wash{background:linear-gradient(135deg,#f0fdf9,#e6fff9)}
+.text-center{text-align:center}
+.label-overline{font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--steel)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:600;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;transition:all .2s ease;text-decoration:none}
+.btn--primary{background:var(--teal);color:var(--indigo)}
+.btn--primary:hover{background:#3dbfa8;color:var(--indigo);transform:translateY(-2px);box-shadow:0 8px 24px rgba(73,206,181,.3)}
+.btn--ghost{background:transparent;border:2px solid var(--teal);color:var(--indigo)}
+.btn--ghost:hover{background:rgba(73,206,181,.1);color:var(--indigo);transform:translateY(-2px)}
+.btn--ghost.btn--on-dark{color:white}
+.btn--link{background:none;padding:14px 0;color:var(--teal-alt)}
+.btn--link:hover{color:var(--teal)}
+.badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:6px;margin-bottom:12px}
+.badge--teal{background:var(--teal);color:var(--indigo)}
+.badge--indigo{background:var(--indigo);color:var(--teal)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--duration) var(--ease-out-expo),transform var(--duration) var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Nav (same as homepage) */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-height);display:flex;align-items:center;padding:0 var(--side-pad);transition:background .3s ease,box-shadow .3s ease}
+.nav--transparent{background:transparent}
+.nav--solid{background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--content-max);margin:0 auto}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--indigo);font-family:var(--font-sans);font-size:18px;font-weight:700;letter-spacing:-0.01em}
+.nav__logo svg{height:36px;width:auto}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(73,206,181,0.12),rgba(73,206,181,0.04));margin-bottom:16px}
+.icon svg{width:24px;height:24px;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.nav__links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav__links a{font-size:14px;font-weight:500;color:var(--charcoal);text-decoration:none;transition:color .2s}
+.nav__links a:hover,.nav__links a.active{color:var(--teal-alt)}
+.nav__cta{margin-left:16px}
+.nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:1001}
+.nav__hamburger span{display:block;width:24px;height:2px;background:var(--charcoal);transition:all .3s ease}
+.nav__mobile{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--indigo);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.nav__mobile.open{display:flex}
+.nav__mobile a{font-family:var(--font-serif);font-size:28px;color:white;text-decoration:none}
+.nav__mobile a:hover{color:var(--teal)}
+
+/* Page hero (shorter than homepage hero) */
+.page-hero{padding:160px 0 80px;background:var(--cream);position:relative;overflow:hidden}
+.page-hero h1{margin-bottom:16px}
+.page-hero .subtitle{font-size:18px;color:var(--gray-700);max-width:640px;line-height:1.5}
+.page-hero .body-text{font-size:16px;color:var(--gray-700);max-width:640px;margin-top:12px;line-height:1.7}
+
+/* Audit section */
+.audit-section{position:relative}
+.audit-section .audit-card{background:white;border:1px solid var(--border);border-radius:20px;padding:48px;max-width:800px}
+.audit-section h3{font-size:28px;margin-bottom:16px}
+.audit-section .detail-list{margin:24px 0;padding:0;list-style:none}
+.audit-section .detail-list li{padding:8px 0 8px 24px;position:relative;font-size:15px;color:var(--gray-700)}
+.audit-section .detail-list li::before{content:"✓";position:absolute;left:0;color:var(--teal-alt);font-weight:700}
+.audit-meta{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap}
+.audit-meta-item{font-size:14px;color:var(--steel)}
+.audit-meta-item strong{color:var(--indigo)}
+
+/* Starter Pack (reused) */
+.starter-section{border-left:4px solid var(--teal);border-radius:0 20px 20px 0}
+.starter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0 16px}
+.starter-item{background:white;border-radius:12px;padding:24px;border:1px solid var(--border)}
+.starter-item h4{font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--indigo);margin:12px 0 6px}
+.starter-item p{font-size:14px;line-height:1.6}
+
+/* Booster Packs */
+.packs-section h3{font-size:28px;margin-bottom:16px}
+.packs-included{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+.packs-included li{padding:8px 0 8px 24px;position:relative;font-size:15px;color:var(--gray-700);list-style:none}
+.packs-included li::before{content:"✓";position:absolute;left:0;color:var(--teal-alt);font-weight:700}
+.packs-highlight{background:linear-gradient(135deg,#f0fdf9,#e6fff9);border:1px solid rgba(73,206,181,.2);border-radius:12px;padding:20px 24px;margin:24px 0;font-size:15px;color:var(--charcoal)}
+
+/* Department grid */
+.dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.dept-card{display:flex;align-items:center;justify-content:space-between;background:white;border:1px solid var(--border);border-radius:12px;padding:20px 24px;transition:transform .2s,box-shadow .2s}
+.dept-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.dept-card__info h4{font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--indigo);margin-bottom:4px}
+.dept-card__info p{font-size:13px;color:var(--steel);line-height:1.4}
+.dept-card__price{background:var(--teal);color:var(--indigo);font-size:12px;font-weight:700;padding:4px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0;margin-left:16px}
+
+/* Request Board */
+.request-section{max-width:800px}
+.request-list{margin:20px 0;padding:0;list-style:none}
+.request-list li{padding:8px 0;font-size:15px;color:var(--gray-700);border-bottom:1px solid var(--border)}
+.request-list li:last-child{border:none}
+.request-list li em{font-style:italic;color:var(--steel);font-size:14px}
+
+/* Comparison Table */
+.comparison-table{width:100%;border-collapse:collapse;margin:32px 0}
+.comparison-table th,.comparison-table td{padding:16px 20px;text-align:left;font-size:14px;border-bottom:1px solid var(--border)}
+.comparison-table th{font-family:var(--font-sans);font-weight:600;color:var(--indigo);background:var(--platinum);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.comparison-table td{color:var(--gray-700)}
+.comparison-table td:last-child{color:var(--teal-alt);font-weight:600}
+.comparison-table tr:hover td{background:rgba(73,206,181,.03)}
+
+/* FAQ Accordion */
+.faq-list{max-width:800px;margin:32px auto 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--indigo)}
+.faq-question:hover{color:var(--teal-alt)}
+.faq-icon{font-size:20px;color:var(--steel);transition:transform .3s ease;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.faq-answer p{font-size:15px;color:var(--gray-700);padding-bottom:20px;line-height:1.7}
+.faq-item.open .faq-answer{max-height:300px}
+
+/* CTA Banner */
+.cta-banner{padding:var(--section-pad) 0;text-align:center}
+.cta-banner h2{color:white;margin-bottom:16px}
+.cta-banner p{color:var(--steel);max-width:540px;margin:0 auto 32px;font-size:16px}
+.cta-banner__buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Footer */
+.footer{background:var(--indigo);padding:64px 0 32px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer__logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer__logo svg{height:44px;width:auto}
+.footer__tagline{font-size:14px;color:var(--steel);line-height:1.6}
+.footer__col h4{font-family:var(--font-sans);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px}
+.footer__col ul{list-style:none}
+.footer__col li{margin-bottom:10px}
+.footer__col a{font-size:14px;color:var(--steel);text-decoration:none;transition:color .2s}
+.footer__col a:hover{color:white}
+.footer__bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer__legal{font-size:13px;color:var(--steel)}
+.footer__legal a{color:var(--steel)}
+.footer__legal a:hover{color:white}
+
+/* Responsive */
+@media(max-width:1024px){:root{--side-pad:40px;--section-pad:80px}}
+@media(max-width:768px){
+  :root{--side-pad:var(--side-pad-mobile);--section-pad:var(--section-pad-mobile);--nav-height:var(--nav-height-mobile)}
+  .nav__links,.nav__cta{display:none}
+  .nav__hamburger{display:flex}
+  .starter-grid{grid-template-columns:1fr}
+  .dept-grid{grid-template-columns:1fr}
+  .packs-included{grid-template-columns:1fr}
+  .audit-meta{flex-direction:column;gap:12px}
+  .comparison-table{font-size:13px}
+  .comparison-table th,.comparison-table td{padding:12px}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer__bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){.footer__grid{grid-template-columns:1fr}.comparison-table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav nav--solid" id="mainNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="300 295 430 230" height="36">
+        <path fill="#120B34" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/>
+        <path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/>
+      </svg>
+      AI Deploy
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn--primary nav__cta">Get a $999 Audit</a>
+    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="services.html" onclick="closeMobileNav()">Services</a>
+  <a href="how-it-works.html" onclick="closeMobileNav()">How It Works</a>
+  <a href="case-studies.html" onclick="closeMobileNav()">Case Studies</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  <a href="contact.html" class="btn btn--primary" onclick="closeMobileNav()">Get a $999 Audit</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="reveal">A $999 audit to find the wins. Booster packs to capture them.</h1>
+    <p class="subtitle reveal" style="transition-delay:100ms">Two stages. No complexity. AI deployed into your actual workflows, managed by us, with monthly proof it's working.</p>
+    <p class="body-text reveal" style="transition-delay:200ms">Every engagement starts with understanding your business. We map your workflows, identify the highest-impact automation opportunities, hand you a free starter pack with three working automations, and then deploy purpose-built AI skills — managed, monitored, and measured. You don't need technical staff. You don't need to learn anything new. You just get the results.</p>
+  </div>
+</section>
+
+<!-- THE AUDIT -->
+<section class="section section--platinum audit-section" id="audit">
+  <div class="container">
+    <div class="audit-card reveal">
+      <span class="badge badge--teal">Start Here</span>
+      <h3>Find the wins — $999</h3>
+      <p>A largely automated assessment that maps your operations and identifies the highest-ROI automation opportunities — plus three free automations running before you spend another dollar.</p>
+
+      <h4 style="font-family:var(--font-sans);font-size:14px;font-weight:700;color:var(--indigo);margin:28px 0 8px">What we do:</h4>
+      <ul class="detail-list">
+        <li>Map your end-to-end workflows through team interviews and process observation</li>
+        <li>Score each workflow on a friction-automation matrix — Friction × Frequency × Feasibility</li>
+        <li>Rank opportunities by ROI: time saved, cost reduced, error rate improved</li>
+        <li>Deliver a clear recommendation on which booster packs to deploy first</li>
+      </ul>
+
+      <h4 style="font-family:var(--font-sans);font-size:14px;font-weight:700;color:var(--indigo);margin:28px 0 8px">What you get:</h4>
+      <ul class="detail-list">
+        <li><strong>Automation Blueprint</strong> — a prioritised roadmap of every opportunity we found, scored and ranked</li>
+        <li><strong>ROI projections</strong> for each opportunity, grounded in your actual labour costs and volumes</li>
+        <li><strong>Free Starter Pack</strong> — three working automations configured on your own platforms, free for 12 months</li>
+        <li><strong>Context-Aware Assistant</strong> — a chat interface connected to your business data</li>
+        <li>No obligation to proceed — the blueprint and the starter pack are yours to keep</li>
+      </ul>
+
+      <div class="audit-meta">
+        <div class="audit-meta-item"><strong>Duration:</strong> ~1 week (3-4 working sessions)</div>
+        <div class="audit-meta-item"><strong>Investment:</strong> $999 + GST (one-off)</div>
+      </div>
+
+      <a href="contact.html" class="btn btn--primary" style="margin-top:32px">Book Your Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- FREE STARTER PACK -->
+<section class="section section--teal-wash starter-section">
+  <div class="container">
+    <h2 class="reveal">Immediate value. No extra cost.</h2>
+    <p class="reveal" style="margin-top:12px;max-width:700px">Every audit includes three foundational automations configured on your existing platforms — Gmail, Outlook, Zoom, Teams, Google Docs, Word, Notion. These aren't our proprietary tools. They're implementations of features already available in your software. We configure them properly, write the prompts, and hand over a working setup. Free for 12 months.</p>
+    <div class="starter-grid">
+      <div class="starter-item reveal" style="transition-delay:0ms">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg></div>
+        <h4>Email Triage & Drafting</h4>
+        <p>Configure your email AI features with custom triage rules, response templates, and categorisation for your workflow.</p>
+      </div>
+      <div class="starter-item reveal" style="transition-delay:80ms">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg></div>
+        <h4>Meeting Notes & Actions</h4>
+        <p>Set up AI meeting notes with action-item extraction, connected to your task tracker.</p>
+      </div>
+      <div class="starter-item reveal" style="transition-delay:160ms">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+        <h4>Document Drafting</h4>
+        <p>Build prompt templates and workflows in your existing tools, create your standard document templates with AI assistance.</p>
+      </div>
+    </div>
+    <p class="reveal" style="font-size:14px;color:var(--gray-700);margin-top:12px"><strong>Plus: Context-Aware Assistant</strong> — A chat interface connected to your own data. Ask questions in natural language. Answers grounded in your context.</p>
+  </div>
+</section>
+
+<!-- BOOSTER PACKS -->
+<section class="section section--cream" id="packs">
+  <div class="container">
+    <div class="reveal" style="max-width:800px">
+      <span class="badge badge--indigo">Where the Value Lives</span>
+      <h3>Purpose-built AI skills for your department</h3>
+      <p style="margin-top:12px">Each booster pack includes 3–5 Agent Skills tailored to a specific department or function — plus ongoing management, monthly reporting, and a 24/7 request board. Stack up to four packs for a full-suite deployment.</p>
+
+      <ul class="packs-included">
+        <li>3–5 Agent Skills built and deployed</li>
+        <li>Integration into your existing tools</li>
+        <li>Staff enablement: training your team</li>
+        <li>Monthly impact reports showing ROI</li>
+        <li>Ongoing monitoring and optimisation</li>
+        <li>24/7 request board access</li>
+      </ul>
+
+      <div class="packs-highlight">
+        <strong>Full suite at $3,996/month:</strong> Stack all four packs for 12–20 skills across every function. That's less than a single full-time hire — and it covers your entire operation.
+      </div>
+
+      <div class="audit-meta">
+        <div class="audit-meta-item"><strong>Deploy time:</strong> 1–2 weeks per pack</div>
+        <div class="audit-meta-item"><strong>Investment:</strong> $999/month + GST per pack</div>
+        <div class="audit-meta-item"><strong>Contract:</strong> Month-to-month, no lock-in</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENT PACKS GRID -->
+<section class="section section--platinum">
+  <div class="container">
+    <h2 class="reveal text-center">Pick the departments that need the most help</h2>
+    <p class="reveal text-center" style="max-width:640px;margin:12px auto 40px">Every organisation is different. Choose the booster packs that match your biggest bottlenecks — you'll recognise the departments that apply to you.</p>
+    <div class="dept-grid">
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Investor Relations</h4><p>Investor update generator, board deck builder, cap table modeller, fundraise tracker</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Finance & Ops</h4><p>Burn rate monitor, financial model builder, expense categoriser, KPI dashboard generator</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Product & Engineering</h4><p>Sprint reporter, technical doc writer, bug triage, changelog generator</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Growth & Sales</h4><p>Outbound personaliser, demo follow-up, content repurposer, competitor monitor</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Deal Flow</h4><p>Deal quick screen, deal screener, deck analyser, inbound sorter</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Portfolio Management</h4><p>Portfolio dashboard, LP update generator, board meeting prep, follow-on analyser</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Research & Intelligence</h4><p>Market map builder, founder background check, trend monitor, comp table generator</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Fund Operations</h4><p>LP CRM manager, fund accounting prep, AGM deck builder, compliance tracker</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Communications</h4><p>Weekly bulletin builder, social media scheduler, visitor follow-up, announcement drafter</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Operations & Events</h4><p>Event planner, volunteer coordinator, facility scheduler, meeting minutes & actions</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Pastoral Care</h4><p>Care request tracker, congregation insights, sermon research assistant, small group manager</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Finance & Stewardship</h4><p>Giving tracker, budget monitor, grant & funding writer, compliance reporter</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Parent Communications</h4><p>Newsletter builder, parent enquiry responder, report comment generator, permission slip manager</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Academic Administration</h4><p>Timetable conflict checker, assessment moderator, curriculum mapper, PD tracker</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Enrollment & Admissions</h4><p>Enquiry responder, application processor, waitlist manager, orientation pack generator</p></div><div class="dept-card__price">$999/mo</div></div>
+      <div class="dept-card reveal"><div class="dept-card__info"><h4>Compliance & Reporting</h4><p>Incident reporter, WHS checklist manager, board report generator, regulatory filing prep</p></div><div class="dept-card__price">$999/mo</div></div>
+    </div>
+    <p class="reveal text-center" style="margin-top:32px;font-size:15px;color:var(--steel)"><strong>Don't see your department?</strong> We build custom packs from your audit roadmap. If it's a repeatable workflow, we can automate it.</p>
+  </div>
+</section>
+
+<!-- REQUEST BOARD -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="request-section reveal">
+      <h2>Submit a request. Watch it get built.</h2>
+      <p style="margin-top:12px">Every booster pack comes with access to a 24/7 request board — a kanban where you can submit new skill requests, modifications, bug reports, and questions anytime. Powered by the Skill Factory, our autonomous development agent, most requests are triaged, built, tested, and deployed without human intervention.</p>
+      <ul class="request-list">
+        <li>New skills <em>"Can you automate our CPD tracking?"</em></li>
+        <li>Modifications <em>"Change the response template to include our new pricing"</em></li>
+        <li>Bug reports <em>"The reconciliation skill missed a transaction type"</em></li>
+        <li>Priority changes <em>"Run the variance analysis weekly instead of monthly"</em></li>
+        <li>Questions <em>"How is the email triage deciding what's urgent?"</em></li>
+      </ul>
+      <p style="font-size:14px;color:var(--steel);margin-top:12px"><strong>SLA:</strong> Every request gets a response within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section section--platinum">
+  <div class="container">
+    <h2 class="reveal text-center">What you'd pay otherwise</h2>
+    <table class="comparison-table reveal" style="margin-top:32px">
+      <thead>
+        <tr><th>What You Need</th><th>What It Costs Today</th><th>AI Deploy Equivalent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Part-time virtual assistant</td><td>$1,500–$3,000/month</td><td>Free Starter Pack — free for 12 months</td></tr>
+        <tr><td>Fractional CFO</td><td>$2,000–$5,000/month</td><td>Finance & Ops booster pack — $999/month</td></tr>
+        <tr><td>Junior analyst</td><td>$5,500+/month (salary)</td><td>Full suite, 4 packs — $3,996/month</td></tr>
+        <tr><td>PitchBook (1 seat)</td><td>$24,000+/year</td><td>Deal Flow booster pack — $999/month</td></tr>
+        <tr><td>IT support audit</td><td>$1,500–$3,000</td><td>AI Deploy audit — $999</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--cream">
+  <div class="container text-center">
+    <h2 class="reveal">Frequently asked questions</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Do we need technical staff to work with you?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>No. That's the whole point. We deploy and manage AI for businesses that don't have — and don't want — an in-house AI team. Your team just keeps doing their jobs, faster.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">What tools do you integrate with?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>We're model-agnostic and tool-agnostic. We work with whatever your team already uses — Google Workspace, Microsoft 365, Xero, MYOB, Salesforce, HubSpot, Slack, Teams, and dozens of others. If it has an API, we can connect to it.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Is $999 really enough for a proper audit?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes. Our audit is largely automated — we use our own AI skills to map and score your workflows. That automation is what lets us deliver at a price point that requires zero procurement friction. A partner or practice manager can approve it on the spot.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">What if the audit doesn't find anything worth automating?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>It hasn't happened yet — but if it did, we'd tell you. You'd still walk away with three free working automations (the Free Starter Pack) and a clear understanding of your operations. The audit pays for itself.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Can we start with just one pack?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Absolutely. Most clients start with one pack — the entry point is $999/month, not $3,996. Start where the ROI is highest, see the results, and expand from there.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">What's the difference between AI Deploy and hiring an AI consultant?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Consultants advise. We do. After a consulting engagement, you get a report and the work still needs to happen. After an AI Deploy engagement, you have working automations in production — and we keep running them for you. Managed services are included in every pack, not an add-on.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">How do you measure ROI?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Every deployed skill comes with tracking. Our monthly impact reports show hours saved, tasks automated, error rates, and cost avoidance — tied back to the projections from your audit. If we said it would save 40 hours a month, we prove it.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">What happens if we want to cancel?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Month-to-month, no lock-in. Cancel anytime. The starter pack automations configured on your platforms are yours to keep. The skills we built stay documented — you just won't have managed services.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="section--indigo cta-banner">
+  <div class="container">
+    <h2 class="reveal">Not sure where to start? Start with a $999 audit.</h2>
+    <p class="reveal">A free 30-minute call, then a $999 audit that maps your workflows, delivers a free starter pack with three working automations, and tells you exactly where AI will save you the most time and money.</p>
+    <div class="cta-banner__buttons reveal">
+      <a href="contact.html" class="btn btn--primary">Book a Free Audit Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="225 295 575 365" height="44">
+            <path fill="#FFFFFF" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/>
+            <path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/>
+            <path fill="#FFFFFF" d="M374.965 582.238C399.563 581.86 431.546 577.037 440.005 607.557C440.804 610.44 441.226 613.747 441.266 616.735C441.475 626.803 437.626 636.532 430.585 643.732C419.743 654.473 408.359 654.035 394.249 654.014L374.802 653.994C375.602 631.492 375.041 604.933 374.965 582.238ZM389.497 641.094C400.319 640.046 411.022 642.387 419.822 634.583C424.814 628.866 426.758 623.569 426.232 615.962C424.732 594.239 405.341 594.855 389.515 594.913C389.372 610.306 389.366 625.7 389.497 641.094Z"/>
+            <path fill="#FFFFFF" d="M518.235 581.999C531.69 582.064 560.835 579.156 571.135 587.642C576.029 591.674 578.619 597.714 579.006 603.963C579.462 611.332 577.276 618.685 572.205 624.17C567.959 628.762 562.332 631.226 556.123 631.512C549.348 632.096 540.076 631.705 532.938 631.801L533.034 654.014L518.377 653.989C517.905 630.386 518.218 605.662 518.235 581.999ZM532.987 618.746C541.638 618.754 552.697 619.854 560.087 615.967C563.136 612.971 564.105 610.565 564.136 606.291C564.237 592.258 543.385 594.541 533.972 594.765L533.089 595.292C532.57 600.368 532.944 613.197 532.987 618.746Z"/>
+            <path fill="#FFFFFF" d="M450.498 582.081C469.528 581.682 488.938 582.44 507.893 581.958L507.897 595.33C494.97 594.644 478.877 595.163 465.618 595.052C465.795 600.18 465.726 605.935 465.813 611.151L505.935 611.002L505.904 623.328C496.02 623.154 486.135 623.087 476.25 623.126L465.688 623.119C465.676 629.212 465.644 635.071 465.927 641.162C478.986 640.479 494.445 640.764 507.611 640.729L507.529 654.004C488.672 653.894 469.814 653.91 450.957 654.052C451.091 638.913 450.841 623.415 450.885 608.247C450.907 600.865 451.292 589.075 450.498 582.081Z"/>
+            <path fill="#FFFFFF" d="M262.937 582.21C269.471 582.199 276.005 582.264 282.538 582.406C292.904 604.42 303.064 631.24 312.447 653.987L295.709 653.995C293.549 649.131 291.427 643.032 289.524 637.984L258.844 637.935C259.853 634.269 261.624 629.634 262.908 625.971C270.04 625.634 277.312 626.171 284.709 625.719L281.551 616.862C278.375 608.45 275.581 600.062 272.092 591.76C263.748 611.293 256.23 633.934 247.939 654.184L231.103 654.292C237.097 638.449 253.958 600.409 261.605 582.829C262.049 582.622 262.493 582.416 262.937 582.21Z"/>
+            <path fill="#FFFFFF" d="M712.334 581.925L731.259 581.826C738.573 591.679 744.943 602.071 752.748 611.773C756.933 604.549 768.657 589.092 773.869 582.025L792.44 581.98C786.011 590.461 779.719 599.045 773.567 607.729C769.009 614.161 764.03 620.329 759.544 626.817C759.692 635.428 760.06 645.463 759.572 653.924C754.662 654.013 749.613 653.948 744.691 653.944C745.249 647.005 746.033 633.895 744.283 627.293C743.002 622.458 717.074 589.297 712.334 581.925Z"/>
+            <path fill="#FFFFFF" d="M587.095 581.933C591.685 582.111 597.293 581.908 601.957 581.865L602.004 641.161C614.84 641.597 629.631 640.721 642.933 640.992C642.922 645.343 642.937 649.694 642.978 654.045L587.236 653.977C586.877 630.135 587.097 605.806 587.095 581.933Z"/>
+            <path fill="#FFFFFF" d="M643.059 621.109C642.579 609.613 644.788 601.108 652.784 592.283C666.097 577.59 693.589 577.022 707.917 590.432C716.314 598.291 719.303 609.644 719.514 620.983C714.581 619.906 708.739 618.468 703.802 617.86C703.077 611.106 701.515 604.594 696.058 599.946C685.244 590.734 666.812 593.198 660.562 606.532C658.614 610.689 658.415 613.818 658.857 618.263C659.407 620.447 659.58 621.337 659.779 623.576C654.398 624.64 649.899 625.745 644.606 627.122C644.486 624.362 644.358 623.51 643.059 621.109Z"/>
+            <path fill="#FBFAFD" d="M658.857 618.263C659.407 620.447 659.58 621.337 659.779 623.576C654.398 624.64 649.899 625.745 644.606 627.122C644.486 624.362 644.358 623.51 643.059 621.109C648.417 620.051 653.446 619.059 658.857 618.263Z"/>
+            <path fill="#49CEB5" d="M659.779 623.576C665.644 645.655 689.282 647.888 700.795 628.473C701.691 626.961 702.478 624.838 703.183 623.188C707.813 623.927 714.101 625.485 718.647 626.841C715.204 637.864 709.947 646.134 699.498 651.829C690.596 656.68 677.512 657.148 667.971 654.085C658.94 651.239 651.464 644.826 647.276 636.333C645.949 633.656 643.878 629.898 644.606 627.122C649.899 625.745 654.398 624.64 659.779 623.576Z"/>
+            <path fill="#FFFFFF" d="M333.616 582.235L334.38 582.59C334.876 588.968 334.505 600.295 334.502 606.959L334.528 653.955L320.574 654C319.295 652.692 319.986 589.371 319.839 582.342C324.467 582.427 328.994 582.589 333.616 582.235Z"/>
+          </svg>
+        </div>
+        <p class="footer__tagline">AI that works — deployed, managed, and proven.</p>
+      </div>
+      <div class="footer__col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer__col"><h4>Services</h4><ul><li><a href="services.html#audit">The Audit</a></li><li><a href="services.html#packs">Booster Packs</a></li></ul></div>
+      <div class="footer__col"><h4>Contact</h4><ul><li><a href="mailto:hello@aideploy.com.au">hello@aideploy.com.au</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">X / Twitter</a></li></ul></div>
+    </div>
+    <div class="footer__bottom"><div class="footer__legal">© 2026 AI Deploy Pty Ltd · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></div></div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// Mobile nav
+const hb=document.getElementById('hamburgerBtn'),mn=document.getElementById('mobileNav');
+hb.addEventListener('click',()=>{mn.classList.toggle('open');document.body.style.overflow=mn.classList.contains('open')?'hidden':''});
+function closeMobileNav(){mn.classList.remove('open');document.body.style.overflow=''}
+// FAQ
+function toggleFaq(btn){const item=btn.parentElement;item.classList.toggle('open')}
+</script>
+</body>
+</html>

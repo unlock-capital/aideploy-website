@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AI Deploy</title>
+<meta name="description" content="Book a free audit scoping call or send us a note. No jargon, no pressure — a 30-minute conversation about your workflows and where AI could help.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--indigo:#120B34;--teal:#49CEB5;--charcoal:#2C3E50;--teal-alt:#00B4A6;--sky:#4A90D9;--platinum:#F5F7FA;--steel:#8A9BB0;--cream:#FAF8F5;--warm-white:#FFFDF9;--gray-700:#4a5568;--gray-400:#9ca3af;--border:#e2e8f0;--font-serif:'Fraunces',Georgia,serif;--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--section-pad:120px;--section-pad-mobile:64px;--content-max:1200px;--side-pad:80px;--side-pad-mobile:24px;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--duration:600ms;--nav-height:72px;--nav-height-mobile:64px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--charcoal);line-height:1.7;background:var(--cream);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3{font-family:var(--font-serif);color:var(--indigo);line-height:1.15}
+h1{font-size:clamp(40px,5vw,64px);font-weight:700}
+h2{font-size:clamp(28px,3.5vw,42px);font-weight:600}
+h3{font-size:clamp(20px,2.5vw,28px);font-weight:600}
+p{font-size:16px;color:var(--gray-700)}
+.label-overline{font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--steel)}
+a{color:var(--teal-alt);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--teal)}
+.container{max-width:var(--content-max);margin:0 auto;padding-left:var(--side-pad);padding-right:var(--side-pad)}
+.section{padding:var(--section-pad) 0}
+.section--cream{background:var(--cream)}
+.section--platinum{background:var(--platinum)}
+.section--indigo{background:var(--indigo)}
+.text-center{text-align:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:600;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s ease;text-decoration:none}
+.btn--primary{background:var(--teal);color:var(--indigo)}
+.btn--primary:hover{background:#3dbfa8;color:var(--indigo);transform:translateY(-2px);box-shadow:0 8px 24px rgba(73,206,181,0.3)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--duration) var(--ease-out-expo),transform var(--duration) var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ---- NAV ---- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all 0.3s ease}
+.nav--solid{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav__inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--side-pad);height:var(--nav-height);display:flex;align-items:center;justify-content:space-between}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--indigo);font-family:var(--font-sans);font-size:18px;font-weight:700;letter-spacing:-0.01em}
+.nav__logo svg{height:36px;width:auto}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(73,206,181,0.12),rgba(73,206,181,0.04));margin-bottom:16px}
+.icon svg{width:24px;height:24px;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.nav__links{display:flex;gap:32px;list-style:none}
+.nav__links a{font-size:14px;font-weight:500;color:var(--charcoal);text-decoration:none;transition:color 0.2s}
+.nav__links a:hover,.nav__links a.active{color:var(--teal-alt)}
+.nav__cta{font-size:13px;padding:10px 24px}
+.nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav__hamburger span{width:22px;height:2px;background:var(--indigo);border-radius:2px;transition:all 0.2s}
+.nav__mobile{position:fixed;inset:0;background:var(--indigo);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.nav__mobile.open{opacity:1;pointer-events:auto}
+.nav__mobile a{font-size:20px;color:white;text-decoration:none;font-weight:500}
+
+/* ---- PAGE HERO ---- */
+.page-hero{padding-top:160px;padding-bottom:60px;text-align:center;background:var(--cream)}
+.page-hero h1{margin-bottom:16px}
+.page-hero p{font-size:18px;color:var(--gray-700);max-width:600px;margin:0 auto;line-height:1.6}
+
+/* ---- CONTACT GRID ---- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.contact-card{background:white;border:1px solid var(--border);border-radius:16px;padding:40px}
+.contact-card h3{font-size:22px;margin-bottom:8px}
+.contact-card .card-subtitle{font-size:14px;color:var(--steel);margin-bottom:24px}
+
+/* Booking placeholder */
+.booking-placeholder{background:var(--platinum);border:2px dashed var(--border);border-radius:12px;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.booking-placeholder__icon{color:var(--steel)}
+.booking-placeholder__icon svg{width:32px;height:32px;stroke:var(--steel);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.booking-placeholder__text{font-size:14px;color:var(--steel);text-align:center;max-width:240px}
+.booking-placeholder__badge{font-size:12px;font-weight:600;color:var(--teal-alt);background:rgba(0,180,166,0.1);padding:4px 12px;border-radius:100px}
+
+/* Form */
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--indigo);margin-bottom:6px}
+.form-group label .required{color:var(--teal-alt)}
+.form-input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-family:var(--font-sans);font-size:14px;color:var(--charcoal);background:var(--platinum);transition:border-color 0.2s,box-shadow 0.2s;outline:none}
+.form-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(73,206,181,0.15)}
+.form-input::placeholder{color:var(--gray-400)}
+textarea.form-input{min-height:100px;resize:vertical}
+select.form-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A9BB0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+.form-submit{margin-top:8px}
+.form-success{display:none;padding:16px;background:rgba(73,206,181,0.1);border:1px solid var(--teal);border-radius:8px;color:var(--teal-alt);font-weight:600;font-size:14px;text-align:center;margin-top:16px}
+
+/* ---- DIRECT CONTACT ---- */
+.direct-contact{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.direct-contact__item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--charcoal)}
+.direct-contact__icon{width:36px;height:36px;background:linear-gradient(135deg,rgba(73,206,181,0.12),rgba(73,206,181,0.04));border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.direct-contact__icon svg{width:18px;height:18px;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+
+/* ---- WHAT TO EXPECT ---- */
+.expect-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.expect-steps{list-style:none;counter-reset:expect-counter}
+.expect-steps li{counter-increment:expect-counter;position:relative;padding-left:40px;margin-bottom:20px;font-size:15px;color:var(--gray-700);line-height:1.6}
+.expect-steps li::before{content:counter(expect-counter);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--teal);color:var(--indigo);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.expect-info{background:white;border:1px solid var(--border);border-radius:16px;padding:32px}
+.expect-info h4{font-family:var(--font-sans);font-size:14px;font-weight:700;color:var(--indigo);margin-bottom:8px}
+.expect-info p{font-size:14px;color:var(--gray-700);line-height:1.6;margin-bottom:16px}
+.expect-info p:last-child{margin-bottom:0}
+
+/* ---- CLOSING ---- */
+.closing-line{font-family:var(--font-serif);font-size:clamp(18px,2.5vw,22px);color:var(--indigo);font-weight:600;max-width:700px;margin:48px auto 0;text-align:center;line-height:1.4}
+
+/* ---- FOOTER ---- */
+.footer{background:var(--indigo);padding:64px 0 32px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer__logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer__logo svg{height:44px;width:auto}
+.footer__tagline{font-size:14px;color:var(--steel);line-height:1.6}
+.footer__col h4{font-family:var(--font-sans);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px}
+.footer__col ul{list-style:none}
+.footer__col li{margin-bottom:10px}
+.footer__col a{font-size:14px;color:var(--steel);text-decoration:none;transition:color 0.2s}
+.footer__col a:hover{color:white}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer__legal{font-size:13px;color:var(--steel)}
+.footer__legal a{color:var(--steel)}
+.footer__legal a:hover{color:white}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px){
+  :root{--side-pad:40px;--section-pad:80px}
+}
+@media(max-width:768px){
+  :root{--side-pad:var(--side-pad-mobile);--section-pad:var(--section-pad-mobile);--nav-height:var(--nav-height-mobile)}
+  .nav__links,.nav__cta{display:none}
+  .nav__hamburger{display:flex}
+  .contact-grid{grid-template-columns:1fr}
+  .expect-grid{grid-template-columns:1fr}
+  .direct-contact{flex-direction:column;align-items:center;gap:16px}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer__bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .footer__grid{grid-template-columns:1fr}
+  .contact-card{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav nav--solid" id="mainNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="300 295 430 230" height="36"><path fill="#120B34" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/><path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/></svg>
+      AI Deploy
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn--primary nav__cta">Get a $999 Audit</a>
+    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="services.html" onclick="closeMobileNav()">Services</a>
+  <a href="how-it-works.html" onclick="closeMobileNav()">How It Works</a>
+  <a href="case-studies.html" onclick="closeMobileNav()">Case Studies</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  <a href="contact.html" class="btn btn--primary" onclick="closeMobileNav()">Get a $999 Audit</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="reveal">Let's talk about what AI can do for your business</h1>
+    <p class="reveal" style="transition-delay:100ms">No jargon. No pressure. A 30-minute conversation about your workflows and where AI could help.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     BOOKING + FORM
+     ============================================================ -->
+<section class="section section--platinum">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Booking widget -->
+      <div class="contact-card reveal">
+        <h3>Book a free audit scoping call</h3>
+        <p class="card-subtitle">30 minutes · No commitment</p>
+        <p style="font-size:14px;color:var(--gray-700);margin-bottom:20px">Pick a time that works. We'll spend 30 minutes learning about your operations, flag the obvious automation opportunities, and give you an honest recommendation on whether a $999 audit makes sense.</p>
+        <div class="booking-placeholder">
+          <div class="booking-placeholder__icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="booking-placeholder__text">Calendly / Cal.com booking widget will be embedded here</div>
+          <div class="booking-placeholder__badge">Coming soon</div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="contact-card reveal" style="transition-delay:100ms">
+        <h3>Prefer email? Send us a note.</h3>
+        <p class="card-subtitle">We'll be in touch within one business day</p>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your name <span class="required">*</span></label>
+            <input type="text" name="name" class="form-input" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Email address <span class="required">*</span></label>
+            <input type="email" name="email" class="form-input" placeholder="jane@company.com" required>
+          </div>
+          <div class="form-group">
+            <label>Company name <span class="required">*</span></label>
+            <input type="text" name="company" class="form-input" placeholder="Acme Advisory" required>
+          </div>
+          <div class="form-group">
+            <label>Your industry</label>
+            <input type="text" name="industry" class="form-input" placeholder="e.g. Accounting, Property Management, Legal...">
+          </div>
+          <div class="form-group">
+            <label>Approximate team size</label>
+            <select name="team_size" class="form-input">
+              <option value="" disabled selected>Select team size</option>
+              <option>1–10</option>
+              <option>11–25</option>
+              <option>26–50</option>
+              <option>51–100</option>
+              <option>100+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>What's your biggest operational bottleneck?</label>
+            <textarea name="bottleneck" class="form-input" placeholder="Tell us about the workflows that eat the most time..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary form-submit">Request a Call Back</button>
+          <div class="form-success" id="formSuccess">Thanks — we'll be in touch within one business day.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIRECT CONTACT
+     ============================================================ -->
+<section class="section section--cream">
+  <div class="container text-center">
+    <p class="label-overline reveal">Direct Contact</p>
+    <div class="direct-contact reveal" style="margin-top:24px">
+      <div class="direct-contact__item">
+        <div class="direct-contact__icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg></div>
+        <a href="mailto:hello@aideploy.com.au">hello@aideploy.com.au</a>
+      </div>
+      <div class="direct-contact__item">
+        <div class="direct-contact__icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <a href="#">LinkedIn</a>
+      </div>
+      <div class="direct-contact__item">
+        <div class="direct-contact__icon"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div>
+        <a href="#">@aideploy_au</a>
+      </div>
+      <div class="direct-contact__item">
+        <div class="direct-contact__icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <span>Australia-wide · Remote-first</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT TO EXPECT
+     ============================================================ -->
+<section class="section section--platinum">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="reveal">What to expect</h2>
+    </div>
+    <div class="expect-grid">
+      <div class="reveal">
+        <h3 style="font-size:20px;margin-bottom:20px">After you book</h3>
+        <ol class="expect-steps">
+          <li>We'll send a brief pre-call questionnaire (5 minutes) so we come prepared</li>
+          <li>On the call, we'll ask about your workflows, team size, and current tools</li>
+          <li>We'll flag 2–3 obvious automation opportunities and explain the potential ROI</li>
+          <li>If a $999 audit makes sense, we'll scope it. If it doesn't, we'll tell you</li>
+        </ol>
+      </div>
+      <div class="expect-info reveal" style="transition-delay:100ms">
+        <h4>The audit itself</h4>
+        <p>~1 week, largely automated. 3–4 working sessions with your team. You walk away with a ranked automation roadmap, a free starter pack with three working automations (free for 12 months), and a clear recommendation on next steps.</p>
+        <h4 style="margin-top:20px">What it costs</h4>
+        <p>The scoping call is free. The audit is $999 + GST. The free starter pack is included and runs for 12 months at no charge. Booster packs start at $999/month — but only if they make sense for your business.</p>
+      </div>
+    </div>
+    <p class="closing-line reveal">No pitch decks. No sales pressure. Just an honest conversation about whether AI operations makes sense for your business.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="225 295 575 365" height="44"><path fill="#FFFFFF" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/><path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/><path fill="#FFFFFF" d="M296.893 612.498L283.35 649.999H231.676L290.137 586.377C296.478 579.482 300.746 575.074 304.806 571.65C316.024 562.177 325.798 559.156 338.741 558.903C345.605 558.769 354.178 559.416 360.828 560.782L371.728 563.17L337.689 649.999H291.107L306.252 612.498H296.893Z"/><path fill="#FFFFFF" d="M381.474 649.999H337.689L371.728 563.17L381.474 565.298C392.107 567.784 400.074 571.689 406.414 578.29C415.083 587.32 418.543 599.282 414.687 611.32C411.447 621.437 405.244 631.101 398.557 638.955C394.842 643.32 388.467 649.175 381.474 649.999Z"/><path fill="#FFFFFF" d="M449.039 649.999H423.253L464.129 558.903H551.713L539.722 586.377H477.338L472.782 597.015H530.404L519.174 622.526H461.552L449.039 649.999Z"/><path fill="#FFFFFF" d="M537.91 649.999H512.124L553 558.903H586.073C596.777 558.903 607.024 559.558 615.66 565.575C628.533 574.539 631.613 592.78 624.44 607.277C617.405 621.492 603.399 633.871 588.83 641.07C579.476 645.688 568.855 649.033 558.268 649.636C551.575 650.005 544.605 649.999 537.91 649.999Z"/><path fill="#FFFFFF" d="M584.77 649.999L625.647 558.903H651.432L610.557 649.999H584.77Z"/><path fill="#49CEB5" d="M649.553 622.526L660.783 597.015H718.405L707.175 622.526H649.553Z"/><path fill="#FFFFFF" d="M625.647 558.903L584.77 649.999H610.557L651.432 558.903H625.647Z"/><path fill="#FFFFFF" d="M639.205 649.999L680.081 558.903H767.665L755.675 586.377H693.291L688.735 597.015H746.357L735.127 622.526H677.505L665.51 649.999H639.205Z"/><path fill="#FBFAFD" d="M672.062 649.999H639.205L665.51 649.999H672.062Z"/><path fill="#FFFFFF" d="M730.965 649.999L744.508 612.498H753.867L738.722 649.999H786.697L771.815 586.377H795.949L788.397 558.903H749.992C743.339 559.416 738.411 561.195 733.065 564.619C727.089 568.445 722.478 572.88 718.075 578.29C712.281 585.405 703.671 597.7 700.197 606.288C694.695 619.895 697.994 636.053 710.006 644.77C714.629 648.131 721.41 649.999 730.965 649.999Z"/></svg>
+        </div>
+        <p class="footer__tagline">AI that works — deployed, managed, and proven.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#audit">The Audit</a></li>
+          <li><a href="services.html#packs">Booster Packs</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@aideploy.com.au">hello@aideploy.com.au</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__legal">© 2026 AI Deploy Pty Ltd · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Mobile nav
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Form handler (placeholder)
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display = 'block';
+  e.target.style.opacity = '0.5';
+  e.target.style.pointerEvents = 'none';
+}
+</script>
+
+</body>
+</html>

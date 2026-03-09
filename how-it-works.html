@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — AI Deploy</title>
+<meta name="description" content="From first call to first results in 3 weeks. A clear, structured process designed for businesses that want AI working — not another project to manage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--indigo:#120B34;--teal:#49CEB5;--charcoal:#2C3E50;--teal-alt:#00B4A6;--sky:#4A90D9;--platinum:#F5F7FA;--steel:#8A9BB0;--cream:#FAF8F5;--warm-white:#FFFDF9;--gray-700:#4a5568;--gray-400:#9ca3af;--border:#e2e8f0;--font-serif:'Fraunces',Georgia,serif;--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--section-pad:120px;--section-pad-mobile:64px;--content-max:1200px;--side-pad:80px;--side-pad-mobile:24px;--ease-out-expo:cubic-bezier(0.16,1,0.3,1);--duration:600ms;--nav-height:72px;--nav-height-mobile:64px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);color:var(--charcoal);line-height:1.7;background:var(--cream);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3{font-family:var(--font-serif);color:var(--indigo);line-height:1.15}
+h1{font-size:clamp(40px,5vw,64px);font-weight:700}
+h2{font-size:clamp(28px,3.5vw,42px);font-weight:600}
+h3{font-size:clamp(20px,2.5vw,28px);font-weight:600}
+p{font-size:16px;color:var(--gray-700)}
+.label-overline{font-family:var(--font-sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--steel)}
+a{color:var(--teal-alt);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--teal)}
+.container{max-width:var(--content-max);margin:0 auto;padding-left:var(--side-pad);padding-right:var(--side-pad)}
+.section{padding:var(--section-pad) 0}
+.section--cream{background:var(--cream)}
+.section--platinum{background:var(--platinum)}
+.section--indigo{background:var(--indigo)}
+.section--teal-wash{background:linear-gradient(135deg,#f0fdf9,#e6fff9)}
+.text-center{text-align:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:600;padding:14px 32px;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s ease;text-decoration:none}
+.btn--primary{background:var(--teal);color:var(--indigo)}
+.btn--primary:hover{background:#3dbfa8;color:var(--indigo);transform:translateY(-2px);box-shadow:0 8px 24px rgba(73,206,181,0.3)}
+.btn--ghost{background:transparent;border:2px solid var(--teal);color:var(--indigo)}
+.btn--ghost:hover{background:rgba(73,206,181,0.1);color:var(--indigo);transform:translateY(-2px)}
+.btn--ghost.btn--on-dark{color:white}
+.btn--link{background:none;padding:14px 0;color:var(--teal-alt)}
+.btn--link:hover{color:var(--teal)}
+.card{background:white;border:1px solid var(--border);border-radius:16px;padding:32px;transition:transform 0.2s ease,box-shadow 0.2s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.badge{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:6px;margin-bottom:12px}
+.badge--teal{background:var(--teal);color:var(--indigo)}
+.badge--indigo{background:var(--indigo);color:var(--teal)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity var(--duration) var(--ease-out-expo),transform var(--duration) var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ---- NAV ---- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all 0.3s ease}
+.nav--solid{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav--transparent{background:transparent}
+.nav__inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--side-pad);height:var(--nav-height);display:flex;align-items:center;justify-content:space-between}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--indigo);font-family:var(--font-sans);font-size:18px;font-weight:700;letter-spacing:-0.01em}
+.nav__logo svg{height:36px;width:auto}
+.icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(73,206,181,0.12),rgba(73,206,181,0.04));margin-bottom:16px}
+.icon svg{width:24px;height:24px;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.nav__links{display:flex;gap:32px;list-style:none}
+.nav__links a{font-size:14px;font-weight:500;color:var(--charcoal);text-decoration:none;transition:color 0.2s}
+.nav__links a:hover,.nav__links a.active{color:var(--teal-alt)}
+.nav__cta{font-size:13px;padding:10px 24px}
+.nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav__hamburger span{width:22px;height:2px;background:var(--indigo);border-radius:2px;transition:all 0.2s}
+.nav__mobile{position:fixed;inset:0;background:var(--indigo);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.nav__mobile.open{opacity:1;pointer-events:auto}
+.nav__mobile a{font-size:20px;color:white;text-decoration:none;font-weight:500}
+
+/* ---- PAGE HERO (inner pages) ---- */
+.page-hero{padding-top:160px;padding-bottom:80px;text-align:center;background:var(--cream)}
+.page-hero h1{margin-bottom:20px}
+.page-hero .hero__subtitle{font-size:18px;color:var(--gray-700);max-width:640px;margin:0 auto 24px;line-height:1.6}
+.page-hero .hero__body{font-size:15px;color:var(--steel);max-width:640px;margin:0 auto;line-height:1.7}
+
+/* ---- TIMELINE MINI (below hero) ---- */
+.timeline-mini{display:flex;justify-content:center;gap:0;margin-top:48px;position:relative}
+.timeline-mini__step{display:flex;flex-direction:column;align-items:center;flex:1;max-width:200px;position:relative}
+.timeline-mini__dot{width:14px;height:14px;border-radius:50%;background:var(--teal);border:3px solid white;box-shadow:0 0 0 2px var(--teal);z-index:2;margin-bottom:12px}
+.timeline-mini__dot--alt{background:var(--indigo);box-shadow:0 0 0 2px var(--indigo)}
+.timeline-mini__label{font-size:12px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:1px}
+.timeline-mini__desc{font-size:12px;color:var(--steel);margin-top:4px;text-align:center}
+.timeline-mini__line{position:absolute;top:7px;left:0;right:0;height:2px;background:linear-gradient(to right,var(--teal),var(--indigo));z-index:1}
+
+/* ---- 4-PHASE PROCESS ---- */
+.process{position:relative;max-width:800px;margin:0 auto}
+.process__line{position:absolute;left:23px;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--teal),var(--indigo));border-radius:4px}
+.process__phase{position:relative;padding-left:64px;padding-bottom:64px}
+.process__phase:last-child{padding-bottom:0}
+.process__circle{position:absolute;left:8px;top:4px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;z-index:2}
+.process__circle--teal{background:var(--teal);color:var(--indigo)}
+.process__circle--indigo{background:var(--indigo);color:var(--teal)}
+.process__header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.process__header h3{font-size:clamp(20px,2.5vw,24px);margin:0}
+.process__meta{font-size:13px;color:var(--steel);font-weight:500;background:var(--platinum);padding:2px 10px;border-radius:4px}
+.process__body{font-size:15px;color:var(--gray-700);line-height:1.7;margin-bottom:16px}
+.process__details{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.process__detail-box{background:var(--platinum);border-radius:12px;padding:20px}
+.process__detail-box h4{font-family:var(--font-sans);font-size:13px;font-weight:700;color:var(--indigo);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.process__detail-box p{font-size:14px;color:var(--gray-700);line-height:1.6}
+
+/* ---- TIMELINE VISUAL ---- */
+.timeline-visual{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:48px}
+.timeline-visual::before{content:'';position:absolute;top:18px;left:0;right:0;height:3px;background:linear-gradient(to right,var(--teal),var(--teal-alt),var(--sky),var(--indigo));border-radius:3px}
+.timeline-visual__item{text-align:center;padding-top:40px;position:relative}
+.timeline-visual__item::before{content:'';position:absolute;top:12px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:white;border:3px solid var(--teal);z-index:2}
+.timeline-visual__item:nth-child(2)::before{border-color:var(--teal-alt)}
+.timeline-visual__item:nth-child(3)::before{border-color:var(--sky)}
+.timeline-visual__item:nth-child(4)::before{border-color:var(--indigo)}
+.timeline-visual__week{font-size:13px;font-weight:700;color:var(--indigo);margin-bottom:4px}
+.timeline-visual__desc{font-size:13px;color:var(--gray-700);line-height:1.5}
+.timeline-visual__quote{margin-top:40px;text-align:center;font-family:var(--font-serif);font-style:italic;font-size:17px;color:var(--charcoal);max-width:600px;margin-left:auto;margin-right:auto}
+
+/* ---- CLIENT PORTAL ---- */
+.portal{max-width:900px;margin:0 auto}
+.portal__browser{background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.1);border:1px solid var(--border)}
+.portal__chrome{background:var(--platinum);padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+.portal__dots{display:flex;gap:6px}
+.portal__dots span{width:10px;height:10px;border-radius:50%}
+.portal__dots span:nth-child(1){background:#ff5f57}
+.portal__dots span:nth-child(2){background:#ffbd2e}
+.portal__dots span:nth-child(3){background:#28ca42}
+.portal__url-bar{flex:1;background:white;border-radius:6px;padding:6px 14px;font-size:12px;color:var(--steel);border:1px solid var(--border)}
+.portal__content{padding:32px}
+.portal__tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px}
+.portal__tab{padding:10px 20px;font-size:13px;font-weight:600;color:var(--steel);cursor:default;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s}
+.portal__tab--active{color:var(--teal-alt);border-bottom-color:var(--teal-alt)}
+.portal__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.portal__metric-card{background:var(--platinum);border-radius:10px;padding:20px;text-align:center}
+.portal__metric-value{font-family:var(--font-serif);font-size:28px;font-weight:700;color:var(--indigo)}
+.portal__metric-label{font-size:12px;color:var(--steel);margin-top:4px}
+.portal__skills{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.portal__skill-row{display:flex;align-items:center;justify-content:space-between;background:var(--platinum);padding:12px 16px;border-radius:8px}
+.portal__skill-name{font-size:13px;font-weight:600;color:var(--indigo)}
+.portal__skill-status{font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px}
+.portal__skill-status--running{background:rgba(73,206,181,0.15);color:var(--teal-alt)}
+.portal__skill-status--paused{background:rgba(138,155,176,0.15);color:var(--steel)}
+.portal__note{text-align:center;margin-top:24px;font-size:14px;color:var(--steel);font-style:italic;max-width:560px;margin-left:auto;margin-right:auto}
+
+/* ---- DIFFERENTIATORS ---- */
+.diff__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px}
+.diff__card{background:white;border:1px solid var(--border);border-radius:16px;padding:32px}
+.diff__card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+.diff__card-icon{margin-bottom:12px}
+.diff__card h3{font-size:20px;margin-bottom:8px}
+.diff__card p{font-size:15px;color:var(--gray-700);line-height:1.6}
+
+/* ---- CTA BANNER ---- */
+.cta-banner{padding:var(--section-pad) 0;text-align:center}
+.cta-banner h2{color:white;margin-bottom:16px}
+.cta-banner p{color:var(--steel);max-width:540px;margin:0 auto 32px;font-size:16px}
+.cta-banner__buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---- FOOTER ---- */
+.footer{background:var(--indigo);padding:64px 0 32px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer__logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer__logo svg{height:44px;width:auto}
+.footer__tagline{font-size:14px;color:var(--steel);line-height:1.6}
+.footer__col h4{font-family:var(--font-sans);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);margin-bottom:16px}
+.footer__col ul{list-style:none}
+.footer__col li{margin-bottom:10px}
+.footer__col a{font-size:14px;color:var(--steel);text-decoration:none;transition:color 0.2s}
+.footer__col a:hover{color:white}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer__legal{font-size:13px;color:var(--steel)}
+.footer__legal a{color:var(--steel)}
+.footer__legal a:hover{color:white}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px){
+  :root{--side-pad:40px;--section-pad:80px}
+}
+@media(max-width:768px){
+  :root{--side-pad:var(--side-pad-mobile);--section-pad:var(--section-pad-mobile);--nav-height:var(--nav-height-mobile)}
+  .nav__links,.nav__cta{display:none}
+  .nav__hamburger{display:flex}
+  .process__details{grid-template-columns:1fr}
+  .timeline-visual{grid-template-columns:repeat(2,1fr);gap:24px}
+  .timeline-visual::before{display:none}
+  .timeline-visual__item{padding-top:0}
+  .timeline-visual__item::before{display:none}
+  .timeline-mini{flex-direction:column;gap:16px;align-items:center}
+  .timeline-mini__line{display:none}
+  .portal__grid{grid-template-columns:1fr}
+  .diff__grid{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer__bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .footer__grid{grid-template-columns:1fr}
+  .cta-banner__buttons{flex-direction:column;align-items:center}
+  .process__header{flex-direction:column;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav nav--solid" id="mainNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="300 295 430 230" height="36"><path fill="#120B34" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/><path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/></svg>
+      AI Deploy
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="how-it-works.html" class="active">How It Works</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn--primary nav__cta">Get a $999 Audit</a>
+    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="services.html" onclick="closeMobileNav()">Services</a>
+  <a href="how-it-works.html" onclick="closeMobileNav()">How It Works</a>
+  <a href="case-studies.html" onclick="closeMobileNav()">Case Studies</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  <a href="contact.html" class="btn btn--primary" onclick="closeMobileNav()">Get a $999 Audit</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <h1 class="reveal">From first call to first results in 3 weeks</h1>
+    <p class="hero__subtitle reveal" style="transition-delay:100ms">A clear, structured process designed for businesses that want AI working — not another project to manage.</p>
+    <p class="hero__body reveal" style="transition-delay:200ms">We've refined this process across multiple engagements. Every step is designed to minimise disruption to your team while maximising the speed to measurable results. And managed services are included from day one — not an add-on.</p>
+
+    <!-- Mini timeline graphic -->
+    <div class="timeline-mini reveal" style="transition-delay:300ms">
+      <div class="timeline-mini__line"></div>
+      <div class="timeline-mini__step">
+        <div class="timeline-mini__dot"></div>
+        <div class="timeline-mini__label">Week 1</div>
+        <div class="timeline-mini__desc">Audit + Free Starter Pack</div>
+      </div>
+      <div class="timeline-mini__step">
+        <div class="timeline-mini__dot"></div>
+        <div class="timeline-mini__label">Weeks 2–3</div>
+        <div class="timeline-mini__desc">First Booster Pack live</div>
+      </div>
+      <div class="timeline-mini__step">
+        <div class="timeline-mini__dot--alt timeline-mini__dot"></div>
+        <div class="timeline-mini__label">Week 4+</div>
+        <div class="timeline-mini__desc">Expand + Managed Services</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE 4-PHASE PROCESS
+     ============================================================ -->
+<section class="section section--platinum">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:64px">
+      <p class="label-overline reveal">The Process</p>
+      <h2 class="reveal" style="margin-top:12px">Four phases. One outcome: AI that works.</h2>
+    </div>
+
+    <div class="process">
+      <div class="process__line"></div>
+
+      <!-- Phase 1 -->
+      <div class="process__phase reveal">
+        <div class="process__circle process__circle--teal">1</div>
+        <div class="process__header">
+          <h3>Audit + Free Starter Pack</h3>
+          <span class="process__meta">~1 week · $999 one-off</span>
+        </div>
+        <p class="process__body">We start with a conversation. You tell us about your business, your team, and the workflows that eat the most time. Then we go deep — mapping your operations, scoring each workflow for automation potential, and delivering a ranked roadmap with ROI projections.</p>
+        <p class="process__body">But you don't wait for the roadmap to see value. In the same week, we configure three free automations on your existing platforms — email triage, meeting notes, and document drafting — plus a Context-Aware Assistant connected to your business data. Free for 12 months.</p>
+        <div class="process__details">
+          <div class="process__detail-box">
+            <h4>What you bring</h4>
+            <p>Your knowledge of your own operations. Access to your team for 3–4 working sessions.</p>
+          </div>
+          <div class="process__detail-box">
+            <h4>What you leave with</h4>
+            <p>A prioritised automation blueprint, ROI projections, three working automations, and a clear recommendation on which booster packs to deploy first.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="process__phase reveal">
+        <div class="process__circle process__circle--teal">2</div>
+        <div class="process__header">
+          <h3>Booster Pack Deploy</h3>
+          <span class="process__meta">1–2 weeks per pack · $999/month per pack</span>
+        </div>
+        <p class="process__body">We take the top opportunities from your audit and build purpose-built AI skills — 3 to 5 per pack, tailored to your department and your workflows. Each skill is integrated into your existing tools, tested with your actual data, and your team is trained before we go live.</p>
+        <p class="process__body">No new platforms to learn. No code for you to write. Your team keeps working the way they already do — just faster.</p>
+        <div class="process__details">
+          <div class="process__detail-box">
+            <h4>What you bring</h4>
+            <p>Feedback during testing. Access to your tools for integration.</p>
+          </div>
+          <div class="process__detail-box">
+            <h4>What you leave with</h4>
+            <p>Working AI skills in production — not prototypes. Plus enablement sessions so your people are confident, not confused.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="process__phase reveal">
+        <div class="process__circle process__circle--indigo">3</div>
+        <div class="process__header">
+          <h3>Pack Expansion</h3>
+          <span class="process__meta">1–2 weeks per additional pack · $999/month each</span>
+        </div>
+        <p class="process__body">Once your first pack is running and delivering results, expand into the next priority area. Most clients start with one pack and add as value is proven. Stack up to four packs for a full-suite deployment covering every function — max $3,996/month.</p>
+        <div class="process__details">
+          <div class="process__detail-box">
+            <h4>What you bring</h4>
+            <p>Nothing beyond your first-pack experience — you know the process now.</p>
+          </div>
+          <div class="process__detail-box">
+            <h4>What you leave with</h4>
+            <p>Additional departments automated. Compounding time savings across your operation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="process__phase reveal">
+        <div class="process__circle process__circle--indigo">4</div>
+        <div class="process__header">
+          <h3>Managed Services</h3>
+          <span class="process__meta">Ongoing · Included in every pack</span>
+        </div>
+        <p class="process__body">We don't leave after deployment. Managed services means we monitor performance, fix issues, optimise skills based on real usage data, and handle new requests through your 24/7 kanban board. Every month, you receive an impact report showing exactly what your investment returned — hours saved, costs avoided, ROI delivered.</p>
+        <p class="process__body">The Skill Factory — our autonomous development agent — processes most requests automatically. Submit a request on your kanban, and it gets triaged, built, tested, and deployed. Simple requests are handled same-day without human intervention.</p>
+        <div class="process__details">
+          <div class="process__detail-box">
+            <h4>What you bring</h4>
+            <p>Nothing ongoing — we manage it.</p>
+          </div>
+          <div class="process__detail-box">
+            <h4>What you leave with</h4>
+            <p>Monthly proof that AI is working for your business. Skills that get better over time because we're still there, making them better.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TIMELINE VISUAL
+     ============================================================ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="reveal">Your first 5 weeks</h2>
+    </div>
+    <div class="timeline-visual reveal">
+      <div class="timeline-visual__item">
+        <div class="timeline-visual__week">Week 1</div>
+        <div class="timeline-visual__desc">Audit + Free Starter Pack deployed (3 free automations running)</div>
+      </div>
+      <div class="timeline-visual__item">
+        <div class="timeline-visual__week">Weeks 2–3</div>
+        <div class="timeline-visual__desc">First booster pack built, tested, and running in production</div>
+      </div>
+      <div class="timeline-visual__item">
+        <div class="timeline-visual__week">Week 4</div>
+        <div class="timeline-visual__desc">Second pack deploy begins (if stacking) + first impact report</div>
+      </div>
+      <div class="timeline-visual__item">
+        <div class="timeline-visual__week">Week 5+</div>
+        <div class="timeline-visual__desc">Managed services in full swing — monthly reports, continuous improvement</div>
+      </div>
+    </div>
+    <p class="timeline-visual__quote reveal" style="transition-delay:100ms">"Most clients have their first booster pack running in production within 3 weeks of the audit."</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLIENT PORTAL
+     ============================================================ -->
+<section class="section section--platinum">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <p class="label-overline reveal">Your Control Panel</p>
+      <h2 class="reveal" style="margin-top:12px">Your control panel for AI operations</h2>
+      <p class="reveal" style="max-width:600px;margin:16px auto 0;color:var(--gray-700)">Every client gets a shared workspace that serves as their AI operations dashboard.</p>
+    </div>
+
+    <div class="portal reveal">
+      <div class="portal__browser">
+        <div class="portal__chrome">
+          <div class="portal__dots"><span></span><span></span><span></span></div>
+          <div class="portal__url-bar">portal.aideploy.com.au / your-company</div>
+        </div>
+        <div class="portal__content">
+          <div class="portal__tabs">
+            <div class="portal__tab portal__tab--active">Dashboard</div>
+            <div class="portal__tab">Skills Library</div>
+            <div class="portal__tab">Request Board</div>
+            <div class="portal__tab">Impact Reports</div>
+            <div class="portal__tab">Knowledge Base</div>
+          </div>
+          <div class="portal__grid">
+            <div class="portal__metric-card">
+              <div class="portal__metric-value">67</div>
+              <div class="portal__metric-label">Hours saved this month</div>
+            </div>
+            <div class="portal__metric-card">
+              <div class="portal__metric-value">8</div>
+              <div class="portal__metric-label">Skills active</div>
+            </div>
+            <div class="portal__metric-card">
+              <div class="portal__metric-value">$5.2k</div>
+              <div class="portal__metric-label">Value returned</div>
+            </div>
+          </div>
+          <div class="portal__skills">
+            <div class="portal__skill-row">
+              <span class="portal__skill-name">Email Triage & Drafting</span>
+              <span class="portal__skill-status portal__skill-status--running">Running</span>
+            </div>
+            <div class="portal__skill-row">
+              <span class="portal__skill-name">Deal Quick Screen</span>
+              <span class="portal__skill-status portal__skill-status--running">Running</span>
+            </div>
+            <div class="portal__skill-row">
+              <span class="portal__skill-name">Meeting Notes & Actions</span>
+              <span class="portal__skill-status portal__skill-status--running">Running</span>
+            </div>
+            <div class="portal__skill-row">
+              <span class="portal__skill-name">CPD Tracker (new)</span>
+              <span class="portal__skill-status portal__skill-status--paused">Building</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="portal__note reveal" style="margin-top:32px">You don't need to open a new app. Most skills run inside your existing tools — your inbox, your CRM, your accounting software. The portal is your management layer, not your daily workflow.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT MAKES US DIFFERENT
+     ============================================================ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="reveal">What makes us different</h2>
+    </div>
+    <div class="diff__grid">
+      <div class="diff__card reveal" style="transition-delay:0ms">
+        <div class="diff__card-icon"><div class="icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div></div>
+        <h3>We do it for you</h3>
+        <p>Other vendors sell you a platform and wish you luck. We deploy AI into your actual workflows, using your actual tools, with your actual team. You don't need technical staff. You don't need to learn anything new. You just get the results.</p>
+      </div>
+      <div class="diff__card reveal" style="transition-delay:80ms">
+        <div class="diff__card-icon"><div class="icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div></div>
+        <h3>We measure everything</h3>
+        <p>Every skill we deploy comes with tracking. Our monthly impact reports show hard numbers — hours saved, tasks completed, errors prevented, costs avoided. Not vibes. Not promises. Proof.</p>
+      </div>
+      <div class="diff__card reveal" style="transition-delay:160ms">
+        <div class="diff__card-icon"><div class="icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div>
+        <h3>We stay — and it doesn't cost extra</h3>
+        <p>Most AI consultants disappear after the report. Most managed services are a separate, expensive add-on. Ours is included in every pack subscription. We don't just build — we run, monitor, optimise, and expand. At no additional charge.</p>
+      </div>
+      <div class="diff__card reveal" style="transition-delay:240ms">
+        <div class="diff__card-icon"><div class="icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div></div>
+        <h3>Your requests get built, not filed</h3>
+        <p>The 24/7 request board isn't a support ticket system. It's powered by the Skill Factory — an autonomous development agent that builds your requests for you. Most requests ship without human intervention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+     ============================================================ -->
+<section class="section--indigo cta-banner">
+  <div class="container">
+    <h2 class="reveal">Ready to see what 3 weeks could look like for your business?</h2>
+    <p class="reveal">Start with a free scoping call. We'll map the opportunity, give you an honest assessment, and recommend the right starting point — no pitch deck, no pressure. Then a $999 audit puts a free starter pack in your hands and a roadmap for everything else.</p>
+    <div class="cta-banner__buttons reveal">
+      <a href="contact.html" class="btn btn--primary">Book a Free Scoping Call</a>
+      <a href="services.html" class="btn btn--ghost btn--on-dark">See services & pricing →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="225 295 575 365" height="44"><path fill="#FFFFFF" d="M432.707 302.226C450.293 300.888 455.909 307.889 464.368 321.966C469.398 330.338 474.56 339.084 479.642 347.444L521.57 416.662L549.423 462.043C554.443 470.292 562.975 482.028 564.334 491.235C567.091 510.642 548.819 526.282 530.113 520.327C518.381 516.593 511.242 500.444 505.158 490.244L468.746 429.277C462.045 418.018 455.473 406.699 448.491 395.577C446.004 391.136 440.846 386.722 435.294 388.164C427.995 390.06 421.309 403.464 417.706 409.48L404.199 431.797C401.553 436.047 398.948 440.323 396.384 444.623C384.151 465.354 396.982 467.057 415.085 467.045C426.777 467.037 440.035 466.307 451.594 467.244C480.646 470.016 482.639 513.634 454.356 519.506C449.262 520.564 439.877 520 434.513 520.001L398.128 520.016L358.376 520.051C340.368 520.14 316.051 523.898 311.048 499.002C310.008 493.825 310.465 486.336 312.836 481.576C317.886 471.439 324.446 461.707 330.438 452.038L363.064 399.077C380.657 370.478 397.167 341.154 415.457 312.99C416.52 311.354 418.159 309.583 419.595 308.257C423.561 304.596 427.533 303.099 432.707 302.226Z"/><path fill="#49CEB5" d="M526.972 301.745C537.324 301.76 548.097 301.872 558.386 301.772C605.091 301.315 644.787 296.886 680.763 333.838C724.667 378.935 723.089 448.399 676.827 491.189C658.023 508.582 634.248 520.731 608.182 519.877C602.238 518.951 596.692 516.314 592.221 512.289C578.599 500.032 581.805 473.144 600.09 467.737C607.3 465.605 614.168 465.836 621.986 462.973C645.913 454.212 660.003 432.257 658.348 407.186C657.625 396.213 653.686 385.697 647.023 376.948C628.605 352.838 604.613 354.431 577.56 354.514L539.509 354.722C533.666 354.767 522.348 355.159 517.003 354.03C512.606 353.125 508.534 351.054 505.213 348.034C494.331 338.053 493.651 319.886 504.156 309.351C511.077 302.411 517.853 301.781 526.972 301.745Z"/><path fill="#FFFFFF" d="M296.893 612.498L283.35 649.999H231.676L290.137 586.377C296.478 579.482 300.746 575.074 304.806 571.65C316.024 562.177 325.798 559.156 338.741 558.903C345.605 558.769 354.178 559.416 360.828 560.782L371.728 563.17L337.689 649.999H291.107L306.252 612.498H296.893Z"/><path fill="#FFFFFF" d="M381.474 649.999H337.689L371.728 563.17L381.474 565.298C392.107 567.784 400.074 571.689 406.414 578.29C415.083 587.32 418.543 599.282 414.687 611.32C411.447 621.437 405.244 631.101 398.557 638.955C394.842 643.32 388.467 649.175 381.474 649.999Z"/><path fill="#FFFFFF" d="M449.039 649.999H423.253L464.129 558.903H551.713L539.722 586.377H477.338L472.782 597.015H530.404L519.174 622.526H461.552L449.039 649.999Z"/><path fill="#FFFFFF" d="M537.91 649.999H512.124L553 558.903H586.073C596.777 558.903 607.024 559.558 615.66 565.575C628.533 574.539 631.613 592.78 624.44 607.277C617.405 621.492 603.399 633.871 588.83 641.07C579.476 645.688 568.855 649.033 558.268 649.636C551.575 650.005 544.605 649.999 537.91 649.999Z"/><path fill="#FFFFFF" d="M584.77 649.999L625.647 558.903H651.432L610.557 649.999H584.77Z"/><path fill="#49CEB5" d="M649.553 622.526L660.783 597.015H718.405L707.175 622.526H649.553Z"/><path fill="#FFFFFF" d="M625.647 558.903L584.77 649.999H610.557L651.432 558.903H625.647Z"/><path fill="#FFFFFF" d="M639.205 649.999L680.081 558.903H767.665L755.675 586.377H693.291L688.735 597.015H746.357L735.127 622.526H677.505L665.51 649.999H639.205Z"/><path fill="#FBFAFD" d="M672.062 649.999H639.205L665.51 649.999H672.062Z"/><path fill="#FFFFFF" d="M730.965 649.999L744.508 612.498H753.867L738.722 649.999H786.697L771.815 586.377H795.949L788.397 558.903H749.992C743.339 559.416 738.411 561.195 733.065 564.619C727.089 568.445 722.478 572.88 718.075 578.29C712.281 585.405 703.671 597.7 700.197 606.288C694.695 619.895 697.994 636.053 710.006 644.77C714.629 648.131 721.41 649.999 730.965 649.999Z"/></svg>
+        </div>
+        <p class="footer__tagline">AI that works — deployed, managed, and proven.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#audit">The Audit</a></li>
+          <li><a href="services.html#packs">Booster Packs</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@aideploy.com.au">hello@aideploy.com.au</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__legal">© 2026 AI Deploy Pty Ltd · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Mobile nav
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
